@@ -6,5 +6,5 @@
 
 4. npm view eslint
 
-5. npm outdated 
-   npm update
+5. a, npm outdated 
+5. b, npm update
