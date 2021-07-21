@@ -1,0 +1,54 @@
+use videoStore
+
+db.movies.insert(
+    [
+        {title: 'Szulejman', category: 'fantasy', director: 'James Cameron'},
+        {title: 'Maunika Show', category: 'action', director: 'Clint Eastwood'},
+        {title: 'Darido Lajcsival', category: 'romantic', director: 'Steven Spielberg'},
+        {title: 'Hirado', category: 'action', director: 'Steven Spielberg'},
+        {title: 'Csupasz Pisztoly', category: 'action', director: 'Clint Eastwood'},
+        {title: 'Felvideki Mulatos', category: 'romantic', director: 'James Cameron'},
+        {title: 'Columbo', category: 'action', director: 'Steven Spielberg'},
+        {title: 'Kojak', category: 'action', director: 'Clint Eastwood'},
+        {title: 'Chuck Norris Visszater 2', category: 'fantasy', director: 'James Cameron'},
+        {title: 'Rambo 9', category: 'romantic', director: 'Steven Spielberg'}
+    ]
+)
+
+db.movies.updateMany({}, {$set:{"ratings": []}})
+
+
+db.movies.update(
+   { title: 'Szulejman' },
+   { $push: { ratings: 1 } }
+)
+
+db.movies.update(
+   { title: 'Szulejman' },
+   { $push: { ratings: 5 } }
+)
+
+
+db.movies.update(
+   { title: 'Csupasz Pisztoly' },
+   { $push: { ratings: 5 } }
+)
+
+db.movies.update(
+   { title: 'Csupasz Pisztoly' },
+   { $push: { ratings: 4 } }
+)
+
+db.movies.update(
+   { title: 'Rambo 9' },
+   { $push: { ratings: 3 } }
+)
+
+db.movies.update(
+   { title: 'Rambo 9' },
+   { $push: { ratings: 4 } }
+)
+
+db.movies.updateMany({}, {$set:{"releaseYear": 2000}})
+
+db.movies.updateMany({}, [{$set: {title: {$toUpper: "$title"}}}])
