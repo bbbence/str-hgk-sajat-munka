@@ -1,0 +1,50 @@
+# 1. 
+db.createCollection('directors')
+
+# 2.
+db.directors.insertOne({_id: 1, name: 'Steven Spielberg', birthYear: 1958, movies: []})
+
+db.directors.insertOne({_id: 2, name: 'Clint Eastwood', birthYear: 1937, movies: []})
+
+db.directors.insertOne({_id: 3, name: 'James Cameron', birthYear: 1949, movies: []})
+
+# 3.
+- no exercise found -
+
+# 4.
+db.directors.update(
+   { _id: 1 },
+   { $push: { movies: { $each: [ ObjectId("60f87161325bb958d259dd46"), ObjectId("60f87161325bb958d259dd47"), ObjectId("60f87161325bb958d259dd4a"), ObjectId("60f87161325bb958d259dd4d") ] }  } }
+)
+
+db.directors.update(
+   { _id: 2 },
+   { $push: { movies: { $each: [ ObjectId("60f87161325bb958d259dd45"), ObjectId("60f87161325bb958d259dd48"), ObjectId("60f87161325bb958d259dd4b") ] }  } }
+)
+
+db.directors.update(
+   { _id: 3 },
+   { $push: { movies: { $each: [ ObjectId("60f87161325bb958d259dd44"), ObjectId("60f87161325bb958d259dd49"), ObjectId("60f87161325bb958d259dd4c") ] }  } }
+)
+
+# 5.
+db.directors.find().pretty()
+
+# 6.
+db.movies.updateMany(
+   {},
+   { $unset: { director: "" } }
+)
+
+# 7.
+ db.movies.find({releaseYear: {$lt: 2002}})
+ db.movies.find({releaseYear: {$gt: 1998}})
+
+ # 8.
+ db.movies.find({$and: [{releaseYear: {$gt: 1992} }, {releaseYear: {$lt:2021}} ]  })
+
+ # 9.
+ db.movies.find({$and: [{releaseYear: {$gt: 1992} }, {releaseYear: {$lt:2021}}, {category: 'action'}  ]  })
+
+ # 10.
+ db.movies.find({category: {$ne: 'fantasy'}})
